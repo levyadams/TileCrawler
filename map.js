@@ -46,9 +46,9 @@ class rover {
         this.y = y;
         this.dir = dir;
     }
-    static TurnRover(arg) {
+    TurnOrMoveRover(arg) {
         for (let x = -1; x < arg.length; x++) {
-           let tmpCharacter = arg.charAt(x);
+            let tmpCharacter = arg.charAt(x);
             switch (tmpCharacter) {
                 case 'r':
                     this.RoverRotation("r");
@@ -56,11 +56,70 @@ class rover {
                 case 'l':
                     this.RoverRotation("l");
                     break;
+                case 'f':
+                    this.RoverMovement("f");
+                    break;
+                case 'b':
+                    this.RoverMovement("b");
+                    break;
             }
         }
     }
-    static RoverRotation(arg) {
-        console.log(`arg: ${arg}, dir:${this.dir}`);
+    RoverMovement(arg) {
+        switch (rover.dir) {
+            case 'N':
+                if (arg === 'f') {
+                    if (map.CanEnterTile(this.x, this.y + 1)) {
+                        this.y += 1;
+                    }
+                }
+                if (arg === 'b') {
+                    if (map.CanEnterTile(this.x, this.y - 1)) {
+                        this.y -= 1;
+                    }
+                }
+                break;
+            case 'S':
+                if (arg === 'f') {
+                    if (map.CanEnterTile(this.x - 1, this.y - 1)) {
+                        this.y -= 1;
+                    }
+                }
+                if (arg === 'b') {
+                    if (map.CanEnterTile(this.x - 1, this.y + 1)) {
+                        this.y += 1;
+                    }
+                }
+                break;
+            case 'E':
+                if (arg === 'f') {
+                    if (map.CanEnterTile(this.x + 1, this.y)) {
+                        this.x += 1;
+                    }
+                }
+                if (arg === 'b') {
+                    if (map.CanEnterTile(this.x - 1, this.y)) {
+                        this.x -= 1;
+                    }
+                }
+                break;
+            case 'W':
+                if (arg === 'f') {
+                    if (map.CanEnterTile(this.x - 1, this.y)) {
+                        this.x -= 1;
+                    }
+                }
+                if (arg === 'b') {
+                    if (map.CanEnterTile(this.x + 1, this.y)) {
+                        this.x += 1;
+                    }
+                }
+                break;
+        }
+        console.log(`Success! Rover is now at: ${this.x},${this.y}.`);
+    }
+
+    RoverRotation(arg) {
         switch (rover.dir) {
             case 'N':
                 if (arg === 'r') {
@@ -72,29 +131,29 @@ class rover {
                 break;
             case 'S':
                 if (arg === 'r') {
-                    rover.dir = "W";
+                    this.dir = "W";
                 }
                 if (arg === 'l') {
-                    rover.dir = "E";
+                    this.dir = "E";
                 }
                 break;
             case 'E':
                 if (arg === 'r') {
-                    rover.dir = "N";
+                    this.dir = "N";
                 }
                 if (arg === 'l') {
-                    rover.dir = "S";
+                    this.dir = "S";
                 }
                 break;
             case 'W':
                 if (arg === 'r') {
-                    rover.dir = "S";
+                    this.dir = "S";
                 }
                 if (arg === 'l') {
-                    rover.dir = "N";
+                    this.dir = "N";
                 }
                 break;
         }
-        console.log(`Rover Rotated! Now facing: ${rover.dir}.`);
+        console.log(`Rover Rotated! Now facing: ${this.dir}.`);
     }
 }
