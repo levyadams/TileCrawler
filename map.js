@@ -17,7 +17,17 @@ class map {
                 tiles.push(tmpVar);
             }
         }
-        console.log(`Success! Created ${currentMap.width*currentMap.height} tiles!`)
+        console.log(`Success! Created ${currentMap.width*currentMap.height} tiles!`);
+        this.AddObstaclesToMap();
+    }
+    static AddObstaclesToMap(){
+        tiles.map(function(tile){
+            let tmpNum = Math.floor(Math.random() * 20);
+            if(tmpNum<2){
+                console.log('obs');
+                tile.traversable = false;
+            }
+        });
     }
     static GetTileByCoords(x, y) {
         let newTile = tiles.filter(function (tile) {
@@ -38,6 +48,7 @@ class map {
             return true;
         }
          else{
+             console.log("Oy, captain, we hit some kind of obsticle or sumfin!");
              return false;
          }
     }

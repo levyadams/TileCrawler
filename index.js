@@ -10,7 +10,7 @@ class APICall{
 
     static get DATABASE_URL() {
         const port = 8000
-        return `http://localhost:${port}/data/stuff.json`;
+        return `http://localhost:${port}/${args}`;
       }
     
       /**
