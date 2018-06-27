@@ -20,22 +20,24 @@ class map {
         console.log(`Success! Created ${currentMap.width*currentMap.height} tiles!`)
     }
     static GetTileByCoords(x, y) {
-        return tiles.filter(function (tile) {
-            return tile.x === x && tile.y === y;
+        let newTile = tiles.filter(function (tile) {
+             return tile.x === x && tile.y === y;
         });
+        if(!newTile){
+           console.log('no tile at those coords. Fix this.');
+        }
+        return newTile;
     }
     static CanEnterTile(x, y) {
         let tile = this.GetTileByCoords(x, y);
-        return true;
         if (!tile) {
             console.log('No tile there!');
             return false;
         }
-        if (tile.traversable === true) {
+        if (tile[0].traversable === true) {
             return true;
         }
          else{
-            return console.log(tile);
              return false;
          }
     }
