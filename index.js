@@ -18,11 +18,11 @@ class APICall{
        */
       static PutCommands(callback) {
         let xhr = new XMLHttpRequest();
-        xhr.open('PUT', DBHelper.DATABASE_URL);
+        xhr.open('PUT', DATABASE_URL);
         xhr.onload = () => {
           if (xhr.status === 200) { // Got a success response from server!
           } else { // Oops!. Got an error from server.
-            const error = (`Request failed. Returned status of ${xhr.status}`);
+            const error = (`Put failed. Returned status of ${xhr.status}`);
             callback(error, null);
           }
         };

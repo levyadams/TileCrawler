@@ -72,7 +72,7 @@ class rover {
         }
     }
     RoverMovement(arg) {
-        switch (rover.dir) {
+        switch (this.dir) {
             case 'N':
                 if (arg === 'f') {
                     if (map.CanEnterTile(this.x, this.y + 1)) {
