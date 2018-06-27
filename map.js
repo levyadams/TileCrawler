@@ -11,7 +11,9 @@ class map {
 
         for (let x = 0; x < currentMap.width; x++) {
             for (let y = 0; y < currentMap.height; y++) {
-                let tmpVar = new tile(x, y, true);
+                let tmpVar = new tile(x, y);
+                tmpVar.traversable = true;
+                console.log(tmpVar.traversable);
                 tiles.push(tmpVar);
             }
         }
@@ -24,20 +26,24 @@ class map {
     }
     static CanEnterTile(x, y) {
         let tile = this.GetTileByCoords(x, y);
+        return true;
         if (!tile) {
             console.log('No tile there!');
             return false;
         }
         if (tile.traversable === true) {
             return true;
-        } else return false;
+        }
+         else{
+            return console.log(tile);
+             return false;
+         }
     }
 }
 class tile {
     constructor(x, y, traversable) {
         this.x = x;
         this.y = y;
-        this.traversable = traversable;
     }
 }
 class rover {
