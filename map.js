@@ -30,10 +30,10 @@ class map {
     }
     static CanEnterTile(x, y) {
         let tile = this.GetTileByCoords(x, y);
-        if (!tile) {
-            console.log('No tile there!');
+        if (!tile.length) {
+            console.log("Hit the edge of the map! OH NO FLAT EARTH IS TRUE! GAHHHHHHHHHHH")
             return false;
-        }
+          }
         if (tile[0].traversable === true) {
             return true;
         }
