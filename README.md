@@ -1,6 +1,10 @@
-## About
+# About
 
 This repo is a simple interface for a 2d grid crawler for a prospective employer.
+
+The bulk of the project took me five hours. It took 30 minutes to set up HTTP and browser-sync + the README.md and small code fixes/comment removal.
+
+All together A little less than 6 hours or so give or take. That is including eating some dinner in there somewhere lol.
 
 # See it working
 
