@@ -1,0 +1,26 @@
+{
+  "name": "project_phase_2",
+  "version": "1.0.0",
+  "description": "Udacity project phase 2",
+  "private": true,
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/levyadams/restaurantReviewApp.git"
+  },
+  "author": " <letitslide87@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.5",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cli": "^2.0.1",
+    "gulp-util": "^3.0.8",
+    "path": "^0.12.7",
+    "run-sequence": "^2.2.1",
+    "source": "0.0.3"
+  }
+}

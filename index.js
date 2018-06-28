@@ -2,7 +2,7 @@ let currentMap = new map(10,10);
 let rover1 = new rover(0,0);
 rover1.dir = "N";
 map.CreateMap();
-rover1.TurnOrMoveRover('fbbfbblfbbfbb');
+rover1.TurnOrMoveRover('fbbffbrbffbbff');
 
 
 
