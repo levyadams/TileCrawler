@@ -38,7 +38,15 @@ class map {
         }
         return newTile;
     }
-    static CanEnterTile(x, y) {
+    static CanEnterTile(x, y,rover) {
+        if(x>currentMap.width){
+            rover.x = 0;
+            x = 0;
+        }
+        if(y>currentMap.height){
+            rover.y = 0;
+            y=0;
+        }
         let tile = this.GetTileByCoords(x, y,rover);
         if (x > currentMap.width - 1) {
             rover.x = 0;
@@ -121,24 +129,24 @@ class rover {
                 break;
             case 'E':
                 if (arg === 'f') {
-                    if (map.CanEnterTile(this.x + 1, this.y)) {
+                    if (map.CanEnterTile(this.x + 1, this.y,this)) {
                         this.x += 1;
                     }
                 }
                 if (arg === 'b') {
-                    if (map.CanEnterTile(this.x - 1, this.y)) {
+                    if (map.CanEnterTile(this.x - 1, this.y,this)) {
                         this.x -= 1;
                     }
                 }
                 break;
             case 'W':
                 if (arg === 'f') {
-                    if (map.CanEnterTile(this.x - 1, this.y)) {
+                    if (map.CanEnterTile(this.x - 1, this.y,this)) {
                         this.x -= 1;
                     }
                 }
                 if (arg === 'b') {
-                    if (map.CanEnterTile(this.x + 1, this.y)) {
+                    if (map.CanEnterTile(this.x + 1, this.y,this)) {
                         this.x += 1;
                     }
                 }
