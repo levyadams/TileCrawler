@@ -11,7 +11,6 @@ All together A little less than 6 hours or so give or take. That is including ea
 1. copy the zip or clone the repo ```git clone git@github.com:levyadams/TileCrawler.git && cd tilecrawler```
 
 2. Inside of the directory type ```npm install```.
-(If you don't have node and don't care about that, simply click the index.html inside of /src and load it inside of any browser.)
 
 3. after install in cli type ```npm run gulp build``` and the file should build. If there is issues here lemme know!
 
