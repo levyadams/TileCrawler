@@ -13,7 +13,6 @@ class map {
             for (let y = 0; y < currentMap.height; y++) {
                 let tmpVar = new tile(x, y);
                 tmpVar.traversable = true;
-                console.log(tmpVar.traversable);
                 tiles.push(tmpVar);
             }
         }
@@ -47,6 +46,15 @@ class map {
             rover.y = 0;
             y=0;
         }
+        if(x<0){
+            
+            rover.x = currentMap.width;
+            x =  currentMap.width-1;
+        }
+        if(y<0){
+            rover.y = currentMap.height;
+            y = currentMap.height-1;
+        }
         let tile = this.GetTileByCoords(x, y,rover);
         if (x > currentMap.width - 1) {
             rover.x = 0;
@@ -57,7 +65,6 @@ class map {
             y = 0;
         }
         if (!tile.length) {
-            console.log("Hit the edge of the map! OH NO FLAT EARTH IS TRUE! GAHHHHHHHHHHH")
             return false;
           }
         if (tile[0].traversable === true) {
