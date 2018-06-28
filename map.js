@@ -18,7 +18,7 @@ class map {
             }
         }
         console.log(`Success! Created ${currentMap.width*currentMap.height} tiles!`);
-        this.AddObstaclesToMap();
+        // this.AddObstaclesToMap();
     }
     static AddObstaclesToMap(){
         tiles.map(function(tile){
@@ -39,7 +39,15 @@ class map {
         return newTile;
     }
     static CanEnterTile(x, y) {
-        let tile = this.GetTileByCoords(x, y);
+        let tile = this.GetTileByCoords(x, y,rover);
+        if (x > currentMap.width - 1) {
+            rover.x = 0;
+            x = 0;
+        }
+        if (y > currentMap.height - 1) {
+            rover.y = 0;
+            y = 0;
+        }
         if (!tile.length) {
             console.log("Hit the edge of the map! OH NO FLAT EARTH IS TRUE! GAHHHHHHHHHHH")
             return false;
@@ -70,42 +78,43 @@ class rover {
             let tmpCharacter = arg.charAt(x);
             switch (tmpCharacter) {
                 case 'r':
-                    this.RoverRotation("r");
+                    this.RoverRotation("r",this);
                     break;
                 case 'l':
-                    this.RoverRotation("l");
+                    this.RoverRotation("l",this);
                     break;
                 case 'f':
-                    this.RoverMovement("f");
+                    this.RoverMovement("f",this);
                     break;
                 case 'b':
-                    this.RoverMovement("b");
+                    this.RoverMovement("b",this);
                     break;
             }
         }
     }
     RoverMovement(arg) {
+
         switch (this.dir) {
             case 'N':
                 if (arg === 'f') {
-                    if (map.CanEnterTile(this.x, this.y + 1)) {
+                    if (map.CanEnterTile(this.x, this.y + 1,this)) {
                         this.y += 1;
                     }
                 }
                 if (arg === 'b') {
-                    if (map.CanEnterTile(this.x, this.y - 1)) {
+                    if (map.CanEnterTile(this.x, this.y - 1,this)) {
                         this.y -= 1;
                     }
                 }
                 break;
             case 'S':
                 if (arg === 'f') {
-                    if (map.CanEnterTile(this.x - 1, this.y - 1)) {
+                    if (map.CanEnterTile(this.x - 1, this.y - 1,this)) {
                         this.y -= 1;
                     }
                 }
                 if (arg === 'b') {
-                    if (map.CanEnterTile(this.x - 1, this.y + 1)) {
+                    if (map.CanEnterTile(this.x - 1, this.y + 1,this)) {
                         this.y += 1;
                     }
                 }
@@ -135,10 +144,10 @@ class rover {
                 }
                 break;
         }
-        console.log(`Success! Rover is now at: ${this.x},${this.y}.`);
+        console.log(`Rover is now at: ${this.x},${this.y}.`);
     }
 
-    RoverRotation(arg) {
+    RoverRotation(arg,rover) {
         switch (rover.dir) {
             case 'N':
                 if (arg === 'r') {
