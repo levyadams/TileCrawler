@@ -17,7 +17,7 @@ class map {
             }
         }
         console.log(`Success! Created ${currentMap.width*currentMap.height} tiles!`);
-        // this.AddObstaclesToMap();
+        this.AddObstaclesToMap();
     }
     static AddObstaclesToMap(){
         tiles.map(function(tile){
